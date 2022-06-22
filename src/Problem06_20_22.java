@@ -3,55 +3,74 @@ import java.util.Scanner;
 public class Problem06_20_22 {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
+        System.out.println("Please enter a number greater than 0: ");
         int n = input.nextInt();
-        int arr[] = new int[n];
-        double average = 0.0;
-        double total = 0.0;
-
-        System.out.print("Please enter " + n + "positive integer: ");
-
-        for (int i = 0; i < arr.length; i++) {
-            int nIntegers = input.nextInt();
-            arr[i] = nIntegers;
-            System.out.print(arr[i] + " ");
+        while(n <= 0 )
+        {
+            System.out.println("Please enter a number greater than 0: ");
+            n = input.nextInt();
         }
+        int[] array = new int[n];
+
+        System.out.print("Enter " + n + " integers: ");
+
+        for (int count = 0; count < array.length; count++)
+        {
+            array[count] = input.nextInt();
+            System.out.print(array[count] + " ");
+        }
+
+        int max = array[0];
+        int min = array[0];
+        int sum = 0;
+        double avg;
+
         System.out.println();
+        for (int count = 0; count < array.length; count++)
+        {
+            if (array[count] > max)
+            {
+                max = array[count];
+            }
+            if (array[count] < min)
+            {
+                min = array[count];
+            }
 
-        //Max
-        int max = arr[0];
-        for (int i = 0; i < arr.length; i++){
-            if (arr[i] > max)
-                max = arr[i];}
-
+            sum += array[count];
+        }
+        avg = (double) sum / n;
+        sum = sum + array[0];
         System.out.println("Maximum value: " + max);
-
-        //Min
-        int min = arr[0];
-        for (int i = 0; i < arr.length; i++) {
-            if (arr[i] < min)
-                min = arr[i];
-        }
         System.out.println("Minimum value: " + min);
-        //Avg
-        for (int i = 0; i < arr.length; i++){
-            total += arr[i];
-        }
-        average = total / n;
-        System.out.println("Average: " + average);
-        //Elements Greater Than Avg
-        System.out.println("Elements greater than average: ");
+        //System.out.println("Average: " + avg);
+        System.out.printf("Average: %.1f:", avg);
 
-        for (int i = 0; i < arr.length; i++){
-            if (arr[i] > average) {
-                System.out.print(arr[i] + " ");
+        System.out.println();
+        System.out.println("Elements greater than average: ");
+        for (int count = 0; count < array.length; count++)
+        {
+            if (array[count] > avg)
+            {
+                System.out.print(array[count] + " ");
             }
         }
-        //Elements greater than last element
+
         System.out.println();
-        System.out.println("Elements greater than " + (arr[arr.length - 1]) + ":");
-        for (int i = 0; i < arr.length - 1; i++){
-            if (arr[i] > arr[arr.length - 1]);
-            System.out.print(arr[i] + " ");
+        System.out.println("Elements greater than 2: ");
+        for (int count = 0; count < array.length; count++)
+        {
+            if (array[count] > array[array.length - 1])
+            {
+                System.out.print(array[count] + " ");
+            }
+        }
+
+        System.out.println();
+        System.out.println("Array in reverse order: ");
+        for (int count = array.length - 1; count >= 0; count--)
+        {
+            System.out.print(array[count] + " ");
         }
     }
 }

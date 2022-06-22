@@ -7,12 +7,9 @@ public class Problem4 {
         int n = input.nextInt();
 
         int sum = 0;
-        int num;
-
-        while (n > 0) {
-            num = n % 10;
-            sum += num;
-            n/= 10;
+        for(int i = Math.abs(n); i != 0; i/=10)
+        {
+            sum += i%10;
         }
         System.out.print("The sum of all digits of " + n + " is: " + sum);
     }
